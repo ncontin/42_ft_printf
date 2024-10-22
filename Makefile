@@ -6,7 +6,7 @@
 #    By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 22:09:41 by noscrub           #+#    #+#              #
-#    Updated: 2024/10/22 23:06:53 by noscrub          ###   ########.fr        #
+#    Updated: 2024/10/22 23:23:54 by noscrub          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME): $(OBJ)
 clean:
 	$(RM) ${OBJ}
 
-fclean:
+fclean: clean
 	${RM} ${NAME}
 
 re: fclean all
