@@ -6,25 +6,35 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:29:36 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/21 19:21:30 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:55:56 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(int n)
 {
-	char	result;
+	char	c;
 	int		counter;
 
 	counter = 0;
-	result = 0;
-	if (nbr > 9)
+	if (n == -2147483648)
 	{
-		ft_putnbr(nbr / 10);
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-	result = (nbr % 10) + '0';
-	write(1, &result, 1);
-	counter++;
-	return (counter);
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n *= -1;
+		counter++;
+	}
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		counter++;
+	}
+	c = (n % 10) + '0';
+	write(1, &c, 1);
+	return (counter + 1);
 }

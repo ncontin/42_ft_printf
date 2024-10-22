@@ -6,11 +6,28 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:52:31 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/21 19:39:24 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/22 12:59:33 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	handle_format(const char *format, va_list args, int *i)
+{
+	int	counter;
+
+	counter = 0;
+	if (format[*i] == 's')
+	{
+		counter += ft_putstr(va_arg(args, char *));
+	}
+	else if (format[*i] == 'd')
+	{
+		counter += ft_putnbr(va_arg(args, int));
+	}
+	(*i)++;
+	return (counter);
+}
 
 int	ft_printf(const char *format, ...)
 {
@@ -19,35 +36,49 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 
 	i = 0;
-	va_start(args, format);
 	counter = 0;
-	while (format[i] != '%' && format[i])
-	{
-		write(1, &format[i], 1);
-		i++;
-		counter++;
-	}
-	if (format[++i] == 's')
-	{
-		counter += ft_putstr(va_arg(args, char *));
-		i++;
-		counter++;
-	}
-	while (format[i] != '%' && format[i])
-	{
-		write(1, &format[i++], 1);
-		counter++;
-	}
-	if (format[++i] == 'd')
-	{
-		counter += ft_putnbr(va_arg(args, int));
-		i++;
-	}
+	va_start(args, format);
 	while (format[i])
 	{
-		write(1, &format[i], 1);
-		i++;
+		if (format[i] == '%')
+		{
+			i++;
+			counter += handle_format(format, args, &i);
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			counter++;
+			i++;
+		}
 	}
+	// while (format[i] != '%' && format[i])
+	// {
+	// 	write(1, &format[i], 1);
+	// 	i++;
+	// 	counter++;
+	// }
+	// if (format[++i] == 's')
+	// {
+	// 	counter += ft_putstr(va_arg(args, char *));
+	// 	i++;
+	// 	counter++;
+	// }
+	// while (format[i] != '%' && format[i])
+	// {
+	// 	write(1, &format[i++], 1);
+	// 	counter++;
+	// }
+	// if (format[++i] == 'd')
+	// {
+	// 	counter += ft_putnbr(va_arg(args, int));
+	// 	i++;
+	// }
+	// while (format[i])
+	// {
+	// 	write(1, &format[i], 1);
+	// 	i++;
+	// }
 	va_end(args);
 	return (counter);
 }
