@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:52:31 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/22 20:12:36 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/22 23:20:45 by noscrub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 static int	handle_format(const char *format, va_list args, int *i)
 {
 	int	counter;
-	int	ptr;
 
 	counter = 0;
 	if (format[*i] == 'c')
 		counter += ft_putchar(va_arg(args, int));
 	else if (format[*i] == '%')
 	{
-		write(1, "%", 1);
+		ft_putchar('%');
 		counter++;
 	}
 	else if (format[*i] == 's')
@@ -53,7 +52,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			ft_putchar(format[i]);
 			counter++;
 			i++;
 		}
@@ -67,10 +66,11 @@ int	main(void)
 	int	res;
 	int	res2;
 
-	res = printf("%s %d %c %% %u", "Jeff", 123, 'J', 123);
+	res = printf("%s %d %c %% %u", "Jeff", 123, '0', -1);
 	printf("\n");
+	printf(" NULL %s NULL ", NULL);
 	printf("printf return: %d\n", res);
-	res2 = ft_printf("%s %d %c %% %u", "Jeff", 123, 'J', 123);
+	res2 = ft_printf("%s %d %c %% %u", "Jeff", 123, '0', -1);
 	printf("\n");
 	printf("ft_printf return: %d\n", res2);
 }
