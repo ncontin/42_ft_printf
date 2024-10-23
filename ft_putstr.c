@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:58:58 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 12:53:27 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/23 18:13:38 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	ft_putstr(char *str)
 	int	i;
 
 	if (str == NULL)
-		return (0);
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	i = 0;
 	while (str[i])
 	{

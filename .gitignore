@@ -10,3 +10,6 @@
 
 # Ignore editor-specific files
 .vscode/
+
+#ignore main
+*main.c.test
