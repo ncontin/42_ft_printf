@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+         #
+#    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 22:09:41 by noscrub           #+#    #+#              #
-#    Updated: 2024/10/22 23:23:54 by noscrub          ###   ########.fr        #
+#    Updated: 2024/10/23 12:49:39 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c ft_putchar.c ft_putnbr_uns.c ft_putnbr.c ft_putstr.c
-CC = gcc
+SRC = ft_printf.c ft_putchar.c ft_putnbr_uns.c ft_putnbr.c ft_putstr.c ft_puthex.c ft_putptr.c
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
 OBJ = $(SRC:.c=.o)

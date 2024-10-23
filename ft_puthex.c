@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 17:29:36 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 12:57:04 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/23 08:56:56 by ncontin           #+#    #+#             */
+/*   Updated: 2024/10/23 12:58:43 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+int	ft_puthex(int n, char hex_case)
 {
 	int	counter;
+	int	rem;
 
 	counter = 0;
-	if (n == -2147483648)
+	if (n >= 16)
+		counter += ft_puthex(n / 16, hex_case);
+	rem = (n % 16);
+	if (rem < 10)
+		ft_putchar(rem + '0');
+	else
 	{
-		write(1, "-2147483648", 11);
-		return (11);
+		if (hex_case == 'X')
+			ft_putchar(rem + 55);
+		else if (hex_case == 'x')
+			ft_putchar(rem + 87);
 	}
-	else if (n < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-		counter++;
-	}
-	if (n >= 10)
-		counter += ft_putnbr(n / 10);
-	ft_putchar((n % 10) + '0');
 	counter++;
 	return (counter);
 }

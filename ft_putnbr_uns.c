@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_uns.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 19:40:05 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/22 23:10:47 by noscrub          ###   ########.fr       */
+/*   Updated: 2024/10/23 12:57:10 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_putnbr_uns(unsigned int n)
 {
-	int	counter;
+	char	c;
+	int		counter;
 
 	counter = 0;
 	if (n >= 10)

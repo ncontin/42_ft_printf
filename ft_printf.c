@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:52:31 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/22 23:20:45 by noscrub          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:06:25 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ static int	handle_format(const char *format, va_list args, int *i)
 		counter += ft_putnbr(va_arg(args, int));
 	else if (format[*i] == 'u')
 		counter += ft_putnbr_uns(va_arg(args, int));
+	else if (format[*i] == 'x')
+		counter += ft_puthex(va_arg(args, int), 'x');
+	else if (format[*i] == 'X')
+		counter += ft_puthex(va_arg(args, int), 'X');
 	(*i)++;
 	return (counter);
 }
@@ -63,14 +67,62 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	int	res;
-	int	res2;
+	int	s;
+	int	d;
+	int	i;
+	int	c;
+	int	perc;
+	int	u;
+	int	x;
+	int	xu;
+	int	sf;
+	int	df;
+	int	ift;
+	int	cf;
+	int	percf;
+	int	uf;
+	int	xf;
+	int	xuf;
+	int	prtres;
+	int	ft_prtres;
 
-	res = printf("%s %d %c %% %u", "Jeff", 123, '0', -1);
+	// printf tests
+	s = printf("printf string: %s", "Jeff");
 	printf("\n");
-	printf(" NULL %s NULL ", NULL);
-	printf("printf return: %d\n", res);
-	res2 = ft_printf("%s %d %c %% %u", "Jeff", 123, '0', -1);
+	d = printf("printf d: %d", 123);
 	printf("\n");
-	printf("ft_printf return: %d\n", res2);
+	i = printf("printf i: %i", 123);
+	printf("\n");
+	c = printf("printf char: %c", '0');
+	printf("\n");
+	perc = printf("printf perc: %%");
+	printf("\n");
+	u = printf("printf unsigned: %u", -1);
+	printf("\n");
+	x = printf("printf hex: %x", 10);
+	printf("\n");
+	xu = printf("printf hexup: %X", 10);
+	printf("\n");
+	// ft_printf tests
+	sf = ft_printf("ft_pri string: %s", "Jeff");
+	printf("\n");
+	df = printf("ft_pri d: %d", 123);
+	printf("\n");
+	printf("ft_printf i: %i", 123);
+	printf("\n");
+	cf = ft_printf("ft_printf char: %c", '0');
+	printf("\n");
+	percf = ft_printf("ft_printf perc: %%");
+	printf("\n");
+	uf = ft_printf("ft_printf unsigned: %u", -1);
+	printf("\n");
+	xf = ft_printf("ft_printf hex: %x", 10);
+	printf("\n");
+	xuf = ft_printf("ft_printf hexup: %X", 10);
+	printf("\n");
+	// ft_prtres = sf + df + cf + percf + uf + xf + xuf;
+	printf("ft res: %d", ft_prtres);
+	printf("\n");
+	// prtres = s + d + c + perc + u + x + xu;
+	printf("og res: %d\n", prtres);
 }
