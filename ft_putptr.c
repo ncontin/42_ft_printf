@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: noscrub <noscrub@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:47:24 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 12:49:50 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/23 16:30:56 by noscrub          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_putptr(unsigned long int)
+#include "ft_printf.h"
+
+int	ft_putptr(void *n)
 {
-	return (0);
+	int	counter;
+
+	counter = 2;
+	write(1, "0x", 2);
+	counter += ft_puthex((unsigned long long int)n, 'x');
+	return (counter);
 }
