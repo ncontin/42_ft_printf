@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 16:58:58 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 18:13:38 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/21 17:29:36 by ncontin           #+#    #+#             */
+/*   Updated: 2024/10/30 10:56:31 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_print_nbr(int n)
 {
-	int	i;
+	int	counter;
 
-	if (str == NULL)
+	counter = 0;
+	if (n == -2147483648)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		write(1, "-2147483648", 11);
+		return (11);
 	}
-	i = 0;
-	while (str[i])
+	else if (n < 0)
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, "-", 1);
+		n *= -1;
+		counter++;
 	}
-	return (i);
+	if (n >= 10)
+		counter += ft_print_nbr(n / 10);
+	ft_print_char((n % 10) + '0');
+	counter++;
+	return (counter);
 }

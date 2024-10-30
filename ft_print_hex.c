@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_uns.c                                    :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 19:40:05 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 18:13:43 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/23 08:56:56 by ncontin           #+#    #+#             */
+/*   Updated: 2024/10/30 10:50:32 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_uns(unsigned int n)
+int	ft_print_hex(unsigned int n, char hex_case)
 {
 	int	counter;
+	int	rem;
 
 	counter = 0;
-	if (n >= 10)
-		counter += ft_putnbr_uns(n / 10);
-	ft_putchar((n % 10) + '0');
+	if (n >= 16)
+		counter += ft_print_hex(n / 16, hex_case);
+	rem = (n % 16);
+	if (rem < 10)
+		ft_print_char(rem + '0');
+	else
+	{
+		if (hex_case == 'X')
+			ft_print_char(rem + 55);
+		else if (hex_case == 'x')
+			ft_print_char(rem + 87);
+	}
 	counter++;
 	return (counter);
 }

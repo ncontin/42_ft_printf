@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_uns.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 17:29:29 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 18:13:46 by ncontin          ###   ########.fr       */
+/*   Created: 2024/10/22 19:40:05 by ncontin           #+#    #+#             */
+/*   Updated: 2024/10/30 10:55:21 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_print_uns(unsigned int n)
 {
-	write(1, &c, 1);
-	return (1);
+	int	counter;
+
+	counter = 0;
+	if (n >= 10)
+		counter += ft_print_uns(n / 10);
+	ft_print_char((n % 10) + '0');
+	counter++;
+	return (counter);
 }

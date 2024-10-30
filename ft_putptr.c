@@ -6,30 +6,30 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:47:24 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 18:27:01 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/30 10:59:56 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex_ptr(size_t nbr)
+int	ft_print_hex_ptr(size_t nbr)
 {
 	int	counter;
 	int	rem;
 
 	counter = 0;
 	if (nbr >= 16)
-		counter += ft_puthex_ptr(nbr / 16);
+		counter += ft_print_hex_ptr(nbr / 16);
 	rem = nbr % 16;
 	if (rem < 10)
-		ft_putchar(rem + '0');
+		ft_print_char(rem + '0');
 	else
-		ft_putchar(rem + 87);
+		ft_print_char(rem + 87);
 	counter++;
 	return (counter);
 }
 
-int	ft_putptr(void *n)
+int	ft_print_ptr(void *n)
 {
 	int		counter;
 	size_t	nbr;
@@ -42,6 +42,6 @@ int	ft_putptr(void *n)
 		return (5);
 	}
 	write(1, "0x", 2);
-	counter += ft_puthex_ptr(nbr);
+	counter += ft_print_hex_ptr(nbr);
 	return (counter);
 }

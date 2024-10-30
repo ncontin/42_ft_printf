@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:52:31 by ncontin           #+#    #+#             */
-/*   Updated: 2024/10/23 18:13:49 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/10/30 11:04:58 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int	handle_format(const char *format, va_list args, int *i)
 
 	counter = 0;
 	if (format[*i] == 'c')
-		counter += ft_putchar(va_arg(args, int));
+		counter += ft_print_char(va_arg(args, int));
 	else if (format[*i] == '%')
 	{
-		ft_putchar('%');
+		ft_print_char('%');
 		counter++;
 	}
 	else if (format[*i] == 's')
-		counter += ft_putstr(va_arg(args, char *));
+		counter += ft_print_str(va_arg(args, char *));
 	else if (format[*i] == 'd' || format[*i] == 'i')
-		counter += ft_putnbr(va_arg(args, int));
+		counter += ft_print_nbr(va_arg(args, int));
 	else if (format[*i] == 'u')
-		counter += ft_putnbr_uns(va_arg(args, int));
+		counter += ft_print_uns(va_arg(args, unsigned int));
 	else if (format[*i] == 'x' || format[*i] == 'X')
-		counter += ft_puthex(va_arg(args, int), format[*i]);
+		counter += ft_print_hex(va_arg(args, int), format[*i]);
 	else if (format[*i] == 'p')
-		counter += ft_putptr(va_arg(args, void *));
+		counter += ft_print_ptr(va_arg(args, void *));
 	(*i)++;
 	return (counter);
 }
@@ -56,7 +56,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar(format[i]);
+			ft_print_char(format[i]);
 			counter++;
 			i++;
 		}

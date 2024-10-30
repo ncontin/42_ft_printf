@@ -6,11 +6,11 @@
 #    By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/22 22:09:41 by ncontin           #+#    #+#              #
-#    Updated: 2024/10/23 18:13:26 by ncontin          ###   ########.fr        #
+#    Updated: 2024/10/30 11:00:40 by ncontin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c ft_putchar.c ft_putnbr_uns.c ft_putnbr.c ft_putstr.c ft_puthex.c ft_putptr.c
+SRC = ft_print_char.c ft_print_hex.c ft_print_nbr.c ft_print_str.c ft_print_uns.c ft_printf.c ft_putptr.c
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libftprintf.a
