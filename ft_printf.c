@@ -6,7 +6,7 @@
 /*   By: ncontin <ncontin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:52:31 by ncontin           #+#    #+#             */
-/*   Updated: 2024/11/05 15:13:28 by ncontin          ###   ########.fr       */
+/*   Updated: 2024/11/08 12:19:53 by ncontin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	handle_format(const char *format, va_list args, int *i)
 	else if (format[*i] == 'u')
 		counter += ft_print_uns(va_arg(args, unsigned int));
 	else if (format[*i] == 'x' || format[*i] == 'X')
-		counter += ft_print_hex(va_arg(args, int), format[*i]);
+		counter += ft_print_hex(va_arg(args, unsigned int), format[*i]);
 	else if (format[*i] == 'p')
 		counter += ft_print_ptr(va_arg(args, void *));
 	(*i)++;
@@ -40,9 +40,9 @@ int	handle_format(const char *format, va_list args, int *i)
 
 int	ft_printf(const char *format, ...)
 {
+	va_list	args;
 	int		counter;
 	int		i;
-	va_list	args;
 
 	i = 0;
 	counter = 0;
@@ -66,18 +66,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (counter);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int	ret;
-// 	int	fret;
-
-// 	ret = printf((NULL), NULL);
-// 	printf("%d", ret);
-// 	printf("\n");
-// 	fret = ft_printf((NULL), NULL);
-// 	ft_printf("%d", fret);
-// 	printf("\n");
-// }
