@@ -14,7 +14,6 @@
   - `%u` - Unsigned decimal integer
   - `%x` / `%X` - Unsigned hexadecimal integer
   - `%%` - Percent sign
-- Handles field width, precision, and flags (`-`, `0`, `.`).
 
 ## Installation
 
